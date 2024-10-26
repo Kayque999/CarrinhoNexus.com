@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Produtos</title>
+</head>
+<body>
+    <h1>Escolha os Produtos</h1>
+    <form method="post">
+        <ul>
+            {% for produto in produtos %}
+            <li>
+                <input type="checkbox" name="{{ produto.nome }}" value="{{ produto.preco }}">
+                {{ produto.nome }} - R$ {{ produto.preco | round(2) }}
+            </li>
+            {% endfor %}
+        </ul>
+        <button type="submit">Calcular Total</button>
+    </form>
+    <h2>Total: R$ {{ total | round(2) }}</h2>
+</body>
+</html>
